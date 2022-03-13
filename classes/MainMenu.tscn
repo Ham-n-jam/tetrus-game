@@ -26,30 +26,6 @@ font_data = ExtResource( 2 )
 size = 8
 font_data = ExtResource( 6 )
 
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 14 )
-region = Rect2( 0, 0, 50, 28 )
-
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 14 )
-region = Rect2( 50, 0, 50, 28 )
-
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 14 )
-region = Rect2( 100, 0, 50, 28 )
-
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 12 )
-region = Rect2( 0, 0, 50, 28 )
-
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 12 )
-region = Rect2( 50, 0, 50, 28 )
-
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 12 )
-region = Rect2( 100, 0, 50, 28 )
-
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 15 )
 region = Rect2( 0, 0, 50, 28 )
@@ -74,18 +50,32 @@ region = Rect2( 50, 0, 50, 28 )
 atlas = ExtResource( 13 )
 region = Rect2( 100, 0, 50, 28 )
 
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 50, 28 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 14 )
+region = Rect2( 50, 0, 50, 28 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 14 )
+region = Rect2( 100, 0, 50, 28 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 50, 28 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 12 )
+region = Rect2( 50, 0, 50, 28 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 12 )
+region = Rect2( 100, 0, 50, 28 )
+
 [sub_resource type="SpriteFrames" id=15]
 animations = [ {
-"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
-"loop": false,
-"name": "2p",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
-"loop": false,
-"name": "4p",
-"speed": 10.0
-}, {
 "frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": false,
 "name": "3p",
@@ -94,6 +84,16 @@ animations = [ {
 "frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
 "loop": false,
 "name": "1p",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"loop": false,
+"name": "2p",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"loop": false,
+"name": "4p",
 "speed": 10.0
 } ]
 
@@ -432,11 +432,11 @@ frame = 2
 playing = true
 
 [node name="UpArrow" type="AnimatedSprite" parent="OuterMenu/PartyMode/MarginContainer/Submenu"]
-position = Vector2( 35, 16 )
+position = Vector2( 36, 16 )
 frames = SubResource( 20 )
 
 [node name="DownArrow" type="AnimatedSprite" parent="OuterMenu/PartyMode/MarginContainer/Submenu"]
-position = Vector2( 36, 54 )
+position = Vector2( 35, 54 )
 rotation = 3.14159
 frames = SubResource( 20 )
 

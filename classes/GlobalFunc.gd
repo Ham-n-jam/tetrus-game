@@ -64,16 +64,25 @@ func getKeyDispString(scancode: int) -> String:
 	return dispStr
 
 
+var cachedJson: Dictionary = {} # k,v: <jsonFilePath, jsonDictionary>
+
 func loadJson(jsonFilePath) -> Dictionary:
-	var file = File.new();
-	file.open(jsonFilePath, File.READ);
-	var dataDict: Dictionary = parse_json(file.get_as_text())
-	file.close()
+	var dataDict: Dictionary
+	if !cachedJson.has(jsonFilePath):
+		var file = File.new();
+		file.open(jsonFilePath, File.READ);
+		dataDict = parse_json(file.get_as_text())
+		file.close()
+		cachedJson[jsonFilePath] = dataDict
+	else:
+		dataDict = cachedJson[jsonFilePath]
 	
 	return dataDict
 
 
 func saveJson(jsonFilePath: String, data: Dictionary) -> void:
+	if cachedJson.has(jsonFilePath):
+		cachedJson[jsonFilePath] = data
 	var file = File.new();
 	file.open(jsonFilePath, File.WRITE);
 	file.store_line(to_json(data))
