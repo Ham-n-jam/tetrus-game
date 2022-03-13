@@ -62,8 +62,8 @@ var _shapeTypeMaterialsDict: Dictionary
 
 func _init() -> void:
 	# Get available palettes for the shapes from the json
-	_availablePalettesDict = _loadJson("res://assets/palettes/json/palettes.json")
-	_shapeTypePaletteDict = _loadJson("res://assets/palettes/json/block_colours.json")
+	_availablePalettesDict = GlobalFunc.loadJson("res://assets/palettes/json/palettes.json")
+	_shapeTypePaletteDict = GlobalFunc.loadJson("res://assets/palettes/json/block_colours.json")
 	
 	# For each block type, init a palette material for that type with a certain colour
 	for key in _shapeTypePaletteDict.keys():
@@ -71,15 +71,6 @@ func _init() -> void:
 		mat.shader = load("res://assets/palettes/uv_palette.shader")
 		mat.set_shader_param("palette", load(_availablePalettesDict[_shapeTypePaletteDict[key]]))
 		_shapeTypeMaterialsDict[key] = mat
-
-
-func _loadJson(jsonFilePath) -> Dictionary:
-	var file = File.new();
-	file.open(jsonFilePath, File.READ);
-	var dataDict: Dictionary = parse_json(file.get_as_text())
-	file.close()
-	
-	return dataDict
 
 
 func getShapeData(shape: String) -> ShapeData:

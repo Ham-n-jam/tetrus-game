@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://assets/sprites/info_box.png" type="Texture" id=1]
 [ext_resource path="res://assets/fonts/bold.ttf" type="DynamicFontData" id=2]
@@ -6,17 +6,17 @@
 [ext_resource path="res://assets/sprites/partyModeIcon.png" type="Texture" id=4]
 [ext_resource path="res://assets/sprites/settingsIcon.png" type="Texture" id=5]
 [ext_resource path="res://assets/fonts/onlineFont.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://classes/mainMenuOptions/VolumeControl.tscn" type="PackedScene" id=7]
 [ext_resource path="res://classes/MenuController.gd" type="Script" id=8]
 [ext_resource path="res://classes/mainMenuOptions/PartyModeMenu.gd" type="Script" id=9]
 [ext_resource path="res://classes/mainMenuOptions/SettingsMenu.gd" type="Script" id=10]
+[ext_resource path="res://classes/OuterMenuInputHandler.gd" type="Script" id=11]
 [ext_resource path="res://assets/sprites/menuUi/4p.png" type="Texture" id=12]
 [ext_resource path="res://assets/sprites/menuUi/1p.png" type="Texture" id=13]
 [ext_resource path="res://assets/sprites/menuUi/2p.png" type="Texture" id=14]
 [ext_resource path="res://assets/sprites/menuUi/3p.png" type="Texture" id=15]
 [ext_resource path="res://assets/sprites/menuUi/arrow.png" type="Texture" id=16]
-[ext_resource path="res://assets/sfx/drop_004.ogg" type="AudioStream" id=17]
-[ext_resource path="res://assets/sfx/confirmation_003.ogg" type="AudioStream" id=18]
-[ext_resource path="res://assets/sfx/confirmation_001.ogg" type="AudioStream" id=19]
+[ext_resource path="res://classes/mainMenuOptions/PlayerControls.tscn" type="PackedScene" id=17]
 
 [sub_resource type="DynamicFont" id=1]
 size = 8
@@ -25,18 +25,6 @@ font_data = ExtResource( 2 )
 [sub_resource type="DynamicFont" id=2]
 size = 8
 font_data = ExtResource( 6 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 13 )
-region = Rect2( 0, 0, 50, 28 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 13 )
-region = Rect2( 50, 0, 50, 28 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 13 )
-region = Rect2( 100, 0, 50, 28 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 14 )
@@ -48,18 +36,6 @@ region = Rect2( 50, 0, 50, 28 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 14 )
-region = Rect2( 100, 0, 50, 28 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 15 )
-region = Rect2( 0, 0, 50, 28 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 15 )
-region = Rect2( 50, 0, 50, 28 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 15 )
 region = Rect2( 100, 0, 50, 28 )
 
 [sub_resource type="AtlasTexture" id=9]
@@ -74,16 +50,40 @@ region = Rect2( 50, 0, 50, 28 )
 atlas = ExtResource( 12 )
 region = Rect2( 100, 0, 50, 28 )
 
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 50, 28 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 15 )
+region = Rect2( 50, 0, 50, 28 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 15 )
+region = Rect2( 100, 0, 50, 28 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 0, 50, 28 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 13 )
+region = Rect2( 50, 0, 50, 28 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 13 )
+region = Rect2( 100, 0, 50, 28 )
+
 [sub_resource type="SpriteFrames" id=15]
 animations = [ {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
-"loop": false,
-"name": "1p",
-"speed": 10.0
-}, {
 "frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
 "loop": false,
 "name": "2p",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"loop": false,
+"name": "4p",
 "speed": 10.0
 }, {
 "frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
@@ -91,9 +91,9 @@ animations = [ {
 "name": "3p",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
 "loop": false,
-"name": "4p",
+"name": "1p",
 "speed": 10.0
 } ]
 
@@ -149,6 +149,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=21]
+resource_name = "onClick"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_position")
@@ -235,6 +236,85 @@ tracks/6/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=24]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 380, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MarginContainer/Submenu:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=23]
+resource_name = "onClick"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 0.2, 1 ),
+"update": 0,
+"values": [ Vector2( 380, 0 ), Vector2( -28, -124 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../PartyMode:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Bg:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 0.2, 1 ),
+"update": 0,
+"values": [ Vector2( 213, 160 ), Vector2( 660, 320 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MarginContainer/Submenu:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -242,12 +322,21 @@ margin_left = 2.0
 margin_top = -50.0
 margin_right = -76.0
 margin_bottom = -219.0
-script = ExtResource( 8 )
+script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PartyMode" type="Control" parent="." groups=["menuOptions"]]
+[node name="OuterMenu" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+_menuOptionsGroup = "mainMenuOptions"
+
+[node name="PartyMode" type="Control" parent="OuterMenu" groups=["mainMenuOptions"]]
 margin_left = 2.0
 margin_right = 302.0
 margin_bottom = 160.0
@@ -256,7 +345,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Bg" type="NinePatchRect" parent="PartyMode"]
+[node name="Bg" type="NinePatchRect" parent="OuterMenu/PartyMode"]
 modulate = Color( 0.152941, 0.054902, 0.0901961, 1 )
 margin_right = 339.0
 margin_bottom = 160.0
@@ -272,7 +361,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="Control" parent="PartyMode"]
+[node name="MarginContainer" type="Control" parent="OuterMenu/PartyMode"]
 margin_right = 300.0
 margin_bottom = 160.0
 rect_min_size = Vector2( 600, 120 )
@@ -280,7 +369,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GameplayIcon" type="TextureRect" parent="PartyMode/MarginContainer"]
+[node name="GameplayIcon" type="TextureRect" parent="OuterMenu/PartyMode/MarginContainer"]
 margin_left = 9.0
 margin_top = 8.0
 margin_right = 153.0
@@ -290,7 +379,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="PartyMode/MarginContainer"]
+[node name="Label" type="Label" parent="OuterMenu/PartyMode/MarginContainer"]
 margin_left = 182.0
 margin_top = 54.0
 margin_right = 260.0
@@ -302,7 +391,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NumPlayersIcon" type="TextureRect" parent="PartyMode/MarginContainer"]
+[node name="NumPlayersIcon" type="TextureRect" parent="OuterMenu/PartyMode/MarginContainer"]
 margin_left = 190.0
 margin_top = 83.0
 margin_right = 250.0
@@ -312,7 +401,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Submenu" type="Control" parent="PartyMode/MarginContainer"]
+[node name="Submenu" type="Control" parent="OuterMenu/PartyMode/MarginContainer"]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 318.0
 margin_top = 61.0
@@ -322,7 +411,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="PartyMode/MarginContainer/Submenu"]
+[node name="Label" type="Label" parent="OuterMenu/PartyMode/MarginContainer/Submenu"]
 margin_left = 17.0
 margin_top = -7.0
 margin_right = 93.0
@@ -335,27 +424,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Players" type="AnimatedSprite" parent="PartyMode/MarginContainer/Submenu"]
+[node name="Players" type="AnimatedSprite" parent="OuterMenu/PartyMode/MarginContainer/Submenu"]
 position = Vector2( 53, 34 )
 frames = SubResource( 15 )
 animation = "1p"
 frame = 2
 playing = true
 
-[node name="UpArrow" type="AnimatedSprite" parent="PartyMode/MarginContainer/Submenu"]
+[node name="UpArrow" type="AnimatedSprite" parent="OuterMenu/PartyMode/MarginContainer/Submenu"]
 position = Vector2( 35, 16 )
 frames = SubResource( 20 )
 
-[node name="DownArrow" type="AnimatedSprite" parent="PartyMode/MarginContainer/Submenu"]
+[node name="DownArrow" type="AnimatedSprite" parent="OuterMenu/PartyMode/MarginContainer/Submenu"]
 position = Vector2( 36, 54 )
 rotation = 3.14159
 frames = SubResource( 20 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PartyMode"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OuterMenu/PartyMode"]
 anims/RESET = SubResource( 22 )
-anims/partyModeOnClick = SubResource( 21 )
+anims/onClick = SubResource( 21 )
 
-[node name="Settings" type="Control" parent="." groups=["menuOptions"]]
+[node name="Settings" type="Control" parent="OuterMenu" groups=["mainMenuOptions"]]
 margin_left = 380.0
 margin_right = 550.0
 margin_bottom = 160.0
@@ -363,8 +452,11 @@ script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+_menuOptionsGroup = "settingsMenuOptions"
+_isSubmenu = true
+_startupTime = 0.3
 
-[node name="Bg" type="NinePatchRect" parent="Settings"]
+[node name="Bg" type="NinePatchRect" parent="OuterMenu/Settings"]
 modulate = Color( 0.152941, 0.054902, 0.0901961, 1 )
 margin_left = -21.0
 margin_right = 192.0
@@ -381,12 +473,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="Control" parent="Settings"]
+[node name="MarginContainer" type="Control" parent="OuterMenu/Settings"]
 margin_right = 170.0
 margin_bottom = 160.0
 rect_min_size = Vector2( 170, 160 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="SettingsIcon" type="TextureRect" parent="Settings/MarginContainer"]
+[node name="SettingsIcon" type="TextureRect" parent="OuterMenu/Settings/MarginContainer"]
 margin_left = 12.0
 margin_top = 31.0
 margin_right = 111.0
@@ -396,7 +491,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Settings/MarginContainer"]
+[node name="Label" type="Label" parent="OuterMenu/Settings/MarginContainer"]
 margin_left = 96.0
 margin_top = 54.0
 margin_right = 156.0
@@ -408,24 +503,105 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Description" type="Label" parent="."]
-margin_left = 2.0
-margin_top = 178.0
-margin_right = 562.0
-margin_bottom = 192.0
+[node name="Submenu" type="Control" parent="OuterMenu/Settings/MarginContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 249.0
+margin_top = 62.0
+margin_right = 289.0
+margin_bottom = 102.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="Control" parent="OuterMenu/Settings/MarginContainer/Submenu"]
+margin_left = 7.0
+margin_top = 14.0
+margin_right = 47.0
+margin_bottom = 54.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VolLabel" type="Label" parent="OuterMenu/Settings/MarginContainer/Submenu/Options"]
+margin_left = -90.0
+margin_top = 43.0
+margin_right = -30.0
+margin_bottom = 62.0
+custom_fonts/font = SubResource( 1 )
+text = "Volume
+Mix"
+align = 2
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VertLine" type="Polygon2D" parent="OuterMenu/Settings/MarginContainer/Submenu/Options"]
+position = Vector2( 2, -1 )
+polygon = PoolVector2Array( -26, 12, -26, 92, -25, 92, -25, 12 )
+
+[node name="VolLabel2" type="Label" parent="OuterMenu/Settings/MarginContainer/Submenu/Options"]
+margin_left = -101.0
+margin_top = 143.0
+margin_right = -30.0
+margin_bottom = 162.0
+custom_fonts/font = SubResource( 1 )
+text = "Player
+Controls"
+align = 2
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VertLine2" type="Polygon2D" parent="OuterMenu/Settings/MarginContainer/Submenu/Options"]
+position = Vector2( 2, 96 )
+polygon = PoolVector2Array( -26, 12, -26, 92, -25, 92, -25, 12 )
+
+[node name="MasterVol" parent="OuterMenu/Settings/MarginContainer/Submenu/Options" groups=["settingsMenuOptions"] instance=ExtResource( 7 )]
+
+[node name="BGMVol" parent="OuterMenu/Settings/MarginContainer/Submenu/Options" groups=["settingsMenuOptions"] instance=ExtResource( 7 )]
+margin_top = 33.0
+margin_bottom = 66.0
+audioChannel = "BGM"
+
+[node name="SFXVol" parent="OuterMenu/Settings/MarginContainer/Submenu/Options" groups=["settingsMenuOptions"] instance=ExtResource( 7 )]
+margin_top = 65.0
+margin_bottom = 98.0
+audioChannel = "SFX"
+
+[node name="PlayerControls" parent="OuterMenu/Settings/MarginContainer/Submenu/Options" groups=["settingsMenuOptions"] instance=ExtResource( 17 )]
+margin_left = -14.0
+margin_top = 104.0
+margin_right = 26.0
+margin_bottom = 144.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OuterMenu/Settings"]
+anims/RESET = SubResource( 24 )
+anims/onClick = SubResource( 23 )
+
+[node name="ChangeTween" type="Tween" parent="OuterMenu/Settings"]
+
+[node name="Description" type="Label" parent="OuterMenu/Settings"]
+margin_left = 55.0
+margin_top = 304.0
+margin_right = 615.0
+margin_bottom = 318.0
 custom_fonts/font = SubResource( 2 )
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ChangeTween" type="Tween" parent="."]
+[node name="Description" type="Label" parent="OuterMenu"]
+margin_left = 20.0
+margin_top = 180.0
+margin_right = 580.0
+margin_bottom = 194.0
+custom_fonts/font = SubResource( 2 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="ChangeSfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 17 )
-
-[node name="ConfirmSfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 18 )
-
-[node name="CancelSfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 19 )
+[node name="ChangeTween" type="Tween" parent="OuterMenu"]

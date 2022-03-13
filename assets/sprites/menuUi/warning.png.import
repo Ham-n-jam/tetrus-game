@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gameplayControls.png-f621c5404f36f78d7934cc8a22883066.stex"
+path="res://.import/warning.png-b311e2eabbbbc066228c5ccf0f77031a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/gameplayUi/playerGameInfo/gameplayControls.png"
-dest_files=[ "res://.import/gameplayControls.png-f621c5404f36f78d7934cc8a22883066.stex" ]
+source_file="res://assets/sprites/menuUi/warning.png"
+dest_files=[ "res://.import/warning.png-b311e2eabbbbc066228c5ccf0f77031a.stex" ]
 
 [params]
 

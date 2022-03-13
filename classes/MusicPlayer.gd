@@ -1,6 +1,11 @@
 extends Node
 
 
+func _ready():
+	for i in range(AudioServer.bus_count):
+		AudioServer.set_bus_volume_db(i, linear2db(7/20.0))
+
+
 func playNewSong(songName: String):
 	var nextSong = load("res://assets/bgm/" + songName + ".ogg")
 	$Bgm.stream = nextSong

@@ -18,7 +18,7 @@ func _ready() -> void:
 	
 	# Fade in name and menu
 	$Tween.interpolate_property($Alex, "modulate:a", 0, 255, 6, Tween.EASE_IN_OUT)
-	$MainMenu.startUpMenu("horizontal")
+	$MainMenu/OuterMenu.startUpMenu("horizontal")
 	$Tween.start()
 	
 	yield($Tween, "tween_completed")

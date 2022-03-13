@@ -1,8 +1,13 @@
-extends MenuOption
+extends MenuController
 
 func _init():
-	description = "CURRENTLY NOT AVAILABLE - working on it!"
-#	"Adjust settings such as the player controls and volume mix."
+	description = "Adjust settings such as the player controls and volume mix."
 
 func onClick():
-	pass
+	$AnimationPlayer.play("onClick")
+	startUpMenu("vertical")
+	_isActive = true
+	$MarginContainer/Submenu/Options/MasterVol.loadVolume()
+	$MarginContainer/Submenu/Options/BGMVol.loadVolume()
+	$MarginContainer/Submenu/Options/SFXVol.loadVolume()
+	return true

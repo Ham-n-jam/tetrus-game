@@ -52,7 +52,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GameOverMenuController" type="Control" parent="."]
+[node name="OuterMenu" type="Control" parent="."]
 margin_left = 1.0
 margin_right = 99.0
 margin_bottom = 104.0
@@ -60,13 +60,13 @@ rect_min_size = Vector2( 98, 104 )
 script = ExtResource( 10 )
 _unselectedColour = Color( 0.0509804, 0.0509804, 0.0509804, 1 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="GameOverMenuController"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="OuterMenu"]
 position = Vector2( 49, 28 )
 frames = SubResource( 3 )
 animation = "gameOver"
 frame = 1
 
-[node name="Score" type="Label" parent="GameOverMenuController"]
+[node name="Score" type="Label" parent="OuterMenu"]
 visible = false
 margin_top = 94.0
 margin_right = 39.0
@@ -78,7 +78,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreNum" type="Label" parent="GameOverMenuController"]
+[node name="ScoreNum" type="Label" parent="OuterMenu"]
 visible = false
 margin_left = 41.0
 margin_top = 92.0
@@ -92,7 +92,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Lines" type="Label" parent="GameOverMenuController"]
+[node name="Lines" type="Label" parent="OuterMenu"]
 visible = false
 margin_top = 77.0
 margin_right = 39.0
@@ -104,7 +104,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LinesNum" type="Label" parent="GameOverMenuController"]
+[node name="LinesNum" type="Label" parent="OuterMenu"]
 visible = false
 margin_left = 44.0
 margin_top = 75.0
@@ -118,9 +118,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayAgain" type="Control" parent="GameOverMenuController" groups=[
-"menuOptions",
-]]
+[node name="PlayAgain" type="Control" parent="OuterMenu" groups=["menuOptions"]]
 visible = false
 margin_left = 22.0
 margin_top = 64.0
@@ -131,7 +129,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Bg" type="NinePatchRect" parent="GameOverMenuController/PlayAgain"]
+[node name="Bg" type="NinePatchRect" parent="OuterMenu/PlayAgain"]
 margin_left = -43.0
 margin_top = 53.0
 margin_right = 97.0
@@ -148,7 +146,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="Control" parent="GameOverMenuController/PlayAgain"]
+[node name="MarginContainer" type="Control" parent="OuterMenu/PlayAgain"]
 margin_left = -134.0
 margin_top = 29.0
 margin_right = 466.0
@@ -158,7 +156,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ReplayIcon" type="TextureRect" parent="GameOverMenuController/PlayAgain/MarginContainer"]
+[node name="ReplayIcon" type="TextureRect" parent="OuterMenu/PlayAgain/MarginContainer"]
 margin_left = 94.0
 margin_top = 31.0
 margin_right = 113.0
@@ -168,7 +166,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="GameOverMenuController/PlayAgain/MarginContainer"]
+[node name="Label" type="Label" parent="OuterMenu/PlayAgain/MarginContainer"]
 margin_left = 124.0
 margin_top = 37.0
 margin_right = 202.0
@@ -180,9 +178,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BackToMainMenu" type="Control" parent="GameOverMenuController" groups=[
-"menuOptions",
-]]
+[node name="BackToMainMenu" type="Control" parent="OuterMenu" groups=["menuOptions"]]
 visible = false
 margin_left = 22.0
 margin_top = 60.0
@@ -193,7 +189,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Bg" type="NinePatchRect" parent="GameOverMenuController/BackToMainMenu"]
+[node name="Bg" type="NinePatchRect" parent="OuterMenu/BackToMainMenu"]
 margin_left = -43.0
 margin_top = 91.0
 margin_right = 97.0
@@ -210,7 +206,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="Control" parent="GameOverMenuController/BackToMainMenu"]
+[node name="MarginContainer" type="Control" parent="OuterMenu/BackToMainMenu"]
 margin_left = 188.0
 margin_top = -47.0
 margin_right = 358.0
@@ -220,7 +216,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BackIcon" type="TextureRect" parent="GameOverMenuController/BackToMainMenu/MarginContainer"]
+[node name="BackIcon" type="TextureRect" parent="OuterMenu/BackToMainMenu/MarginContainer"]
 margin_left = -226.0
 margin_top = 148.0
 margin_right = -209.0
@@ -230,7 +226,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="GameOverMenuController/BackToMainMenu/MarginContainer"]
+[node name="Label" type="Label" parent="OuterMenu/BackToMainMenu/MarginContainer"]
 margin_left = -198.0
 margin_top = 150.0
 margin_right = -75.0
@@ -242,7 +238,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Description" type="Label" parent="GameOverMenuController"]
+[node name="Description" type="Label" parent="OuterMenu"]
 visible = false
 anchor_top = 0.0288462
 anchor_bottom = 0.0288462
@@ -256,13 +252,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ChangeTween" type="Tween" parent="GameOverMenuController"]
+[node name="ChangeTween" type="Tween" parent="OuterMenu"]
 
-[node name="ChangeSfx" type="AudioStreamPlayer" parent="GameOverMenuController"]
+[node name="ChangeSfx" type="AudioStreamPlayer" parent="OuterMenu"]
 stream = ExtResource( 11 )
 
-[node name="ConfirmSfx" type="AudioStreamPlayer" parent="GameOverMenuController"]
+[node name="ConfirmSfx" type="AudioStreamPlayer" parent="OuterMenu"]
 stream = ExtResource( 12 )
 
-[node name="CancelSfx" type="AudioStreamPlayer" parent="GameOverMenuController"]
+[node name="CancelSfx" type="AudioStreamPlayer" parent="OuterMenu"]
 stream = ExtResource( 13 )

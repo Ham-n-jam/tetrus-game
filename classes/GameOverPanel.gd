@@ -1,36 +1,38 @@
-extends Control
+extends OuterMenuInputHandler
 
 
 func doGameOver(score: int, lines: int) -> void:
-	$GameOverMenuController/AnimatedSprite.visible = true
-	$GameOverMenuController/AnimatedSprite.frame = 0
-	$GameOverMenuController/AnimatedSprite.play("gameOver")
+	$OuterMenu/AnimatedSprite.visible = true
+	$OuterMenu/AnimatedSprite.frame = 0
+	$OuterMenu/AnimatedSprite.play("gameOver")
 	
-	yield($GameOverMenuController/AnimatedSprite, "animation_finished")
+	yield($OuterMenu/AnimatedSprite, "animation_finished")
 	
-	$GameOverMenuController/Score.visible = true
-	$GameOverMenuController/ScoreNum.text = String(score)
-	$GameOverMenuController/ScoreNum.visible = true
+	$OuterMenu/Score.visible = true
+	$OuterMenu/ScoreNum.text = String(score)
+	$OuterMenu/ScoreNum.visible = true
 	
-	$GameOverMenuController/Lines.visible = true
-	$GameOverMenuController/LinesNum.text = String(lines)
-	$GameOverMenuController/LinesNum.visible = true
+	$OuterMenu/Lines.visible = true
+	$OuterMenu/LinesNum.text = String(lines)
+	$OuterMenu/LinesNum.visible = true
 	
-	$GameOverMenuController/PlayAgain.visible = true
-	$GameOverMenuController/BackToMainMenu.visible = true
-	$GameOverMenuController/Description.visible = true
+	$OuterMenu/PlayAgain.visible = true
+	$OuterMenu/BackToMainMenu.visible = true
+	$OuterMenu/Description.visible = true
 	
-	$GameOverMenuController.startUpMenu("vertical")
+	$OuterMenu.startUpMenu("vertical")
 
 
 func closePanel() -> void:
-		$GameOverMenuController/AnimatedSprite.visible = false
-		$GameOverMenuController/Score.visible = false
-		$GameOverMenuController/ScoreNum.visible = false
-		$GameOverMenuController/Lines.visible = false
-		$GameOverMenuController/LinesNum.visible = false
-		$GameOverMenuController/PlayAgain.visible = false
-		$GameOverMenuController/BackToMainMenu.visible = false
-		$GameOverMenuController/Description.visible = false
+		$OuterMenu/AnimatedSprite.visible = false
+		$OuterMenu/Score.visible = false
+		$OuterMenu/ScoreNum.visible = false
+		$OuterMenu/Lines.visible = false
+		$OuterMenu/LinesNum.visible = false
+		$OuterMenu/PlayAgain.visible = false
+		$OuterMenu/BackToMainMenu.visible = false
+		$OuterMenu/Description.visible = false
 		
-		yield($GameOverMenuController.shutDownMenu(), "completed")
+		MenuControlsGuide.fadeOut()
+		yield($OuterMenu.shutDownMenu(), "completed")
+		

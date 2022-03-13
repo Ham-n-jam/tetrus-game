@@ -11,9 +11,9 @@ export var unpressedColour: Color
 
 func init(playerNum: int):
 	_playerNum = playerNum
-	$PlayerName.text = "Player %d" % playerNum
+	$Label.text = "Player %d" % playerNum
 	_loadPlayerControls()
-	_playerColour = Color(_loadJson("res://saveData/playerColours.json")[String(playerNum)])
+	_playerColour = Color(GlobalFunc.loadJson("res://saveData/playerColours.json")[String(playerNum)])
 	$BgKeys.modulate = _playerColour
 	var icons = $Icons.get_children()
 	for icon in icons:
@@ -29,31 +29,32 @@ func setHoldBoard(nodes: Array) -> void:
 
 
 func _loadPlayerControls() -> void:
-	var allPlayerControls: Dictionary = _loadJson("res://saveData/controls.json")
+	var allPlayerControls: Dictionary = GlobalFunc.loadJson("res://saveData/controls.json")
 	_controls = allPlayerControls[String(_playerNum)]
 	
 	for key in _controls:
+		var intKey = int(key)
 		match _controls[key]:
 			"softDrop":
-				$softDrop/Label.text = _getKeyDispString(key)
+				$softDrop/Label.text = GlobalFunc.getKeyDispString(intKey)
 			
 			"hardDrop":
-				$hardDrop/Label.text = _getKeyDispString(key)
+				$hardDrop/Label.text = GlobalFunc.getKeyDispString(intKey)
 			
 			"left":
-				$left/Label.text = _getKeyDispString(key)
+				$left/Label.text = GlobalFunc.getKeyDispString(intKey)
 			
 			"right":
-				$right/Label.text = _getKeyDispString(key)
+				$right/Label.text = GlobalFunc.getKeyDispString(intKey)
 			
 			"rotateLeft":
-				$rotateLeft/Label.text = _getKeyDispString(key)
+				$rotateLeft/Label.text = GlobalFunc.getKeyDispString(intKey)
 			
 			"rotateRight":
-				$rotateRight/Label.text = _getKeyDispString(key)
+				$rotateRight/Label.text = GlobalFunc.getKeyDispString(intKey)
 			
 			"hold":
-				$hold/Label.text = _getKeyDispString(key)
+				$hold/Label.text = GlobalFunc.getKeyDispString(intKey)
 
 
 func _getKeyDispString(key: String) -> String:
@@ -118,12 +119,3 @@ func _input(ev: InputEvent) -> void:
 						$Icons/hold.modulate = _playerColour
 					else:
 						$Icons/hold.modulate = unpressedColour
-
-
-func _loadJson(jsonFilePath) -> Dictionary:
-	var file = File.new();
-	file.open(jsonFilePath, File.READ);
-	var dataDict: Dictionary = parse_json(file.get_as_text())
-	file.close()
-	
-	return dataDict

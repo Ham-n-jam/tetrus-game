@@ -49,10 +49,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://classes/InfoVBox.gd"
 }, {
+"base": "MenuOption",
+"class": "MenuController",
+"language": "GDScript",
+"path": "res://classes/MenuController.gd"
+}, {
 "base": "Control",
 "class": "MenuOption",
 "language": "GDScript",
 "path": "res://classes/MenuOption.gd"
+}, {
+"base": "Control",
+"class": "OuterMenuInputHandler",
+"language": "GDScript",
+"path": "res://classes/OuterMenuInputHandler.gd"
 }, {
 "base": "Control",
 "class": "PartyModeGame",
@@ -83,7 +93,9 @@ _global_script_class_icons={
 "GitAPI": "",
 "GlobalColours": "",
 "InfoVBox": "",
+"MenuController": "",
 "MenuOption": "",
+"OuterMenuInputHandler": "",
 "PartyModeGame": "",
 "PlayerGameInfo": "",
 "ShapeData": "",
@@ -103,12 +115,13 @@ config/icon="res://icon.png"
 [autoload]
 
 MenuControlsGuide="*res://classes/MenuControlsGuide.tscn"
+SfxPlayerSingleton="*res://classes/SfxPlayerSingleton.tscn"
+GlobalFunc="*res://classes/GlobalFunc.gd"
 
 [display]
 
 window/size/width=640
 window/size/height=360
-window/size/fullscreen=true
 window/size/test_width=640
 window/size/test_height=360
 window/dpi/allow_hidpi=true
@@ -159,7 +172,7 @@ ogg_vorbis={
 [rendering]
 
 2d/snapping/use_gpu_pixel_snap=true
-environment/default_clear_color=Color( 0.341176, 0.0823529, 0.176471, 1 )
+environment/default_clear_color=Color( 0.207843, 0.207843, 0.207843, 1 )
 environment/default_environment="res://default_env.tres"
 quality/dynamic_fonts/use_oversampling=false
 quality/2d/use_pixel_snap=true

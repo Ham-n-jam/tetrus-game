@@ -64,7 +64,7 @@ func init(board: Board, numPlayers: int=1):
 		var spawnCol: int = playerSpace * (player - 1) + (playerSpace / 2 - 2)
 		_spawnLocationDict[player] = spawnCol
 	
-	_wallkickDataDict = _loadJson("res://assets/dataJson/wallkick_data.json")
+	_wallkickDataDict = GlobalFunc.loadJson("res://assets/dataJson/wallkick_data.json")
 	
 	# Add lock delay timers for each player
 	for player in _playersArray:
@@ -564,12 +564,3 @@ func _on_player_lock_delay_timeout(player: int) -> void:
 
 func _on_player_lock_in_timeout(player: int) -> void:
 	nextShape(player)
-
-
-func _loadJson(jsonFilePath) -> Dictionary:
-	var file = File.new();
-	file.open(jsonFilePath, File.READ);
-	var dataDict: Dictionary = parse_json(file.get_as_text())
-	file.close()
-	
-	return dataDict

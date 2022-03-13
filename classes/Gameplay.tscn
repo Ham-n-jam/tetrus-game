@@ -20,5 +20,6 @@ bus = "SFX"
 
 [node name="GameOver" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
+bus = "SFX"
 
 [connection signal="timeout" from="BoardTicker" to="." method="_on_BoardTicker_timeout"]

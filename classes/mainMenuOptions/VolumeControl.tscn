@@ -1,0 +1,114 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/fonts/onlineFont.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/sprites/menuUi/volumeBlockBg.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/menuUi/volumeBlock.png" type="Texture" id=3]
+[ext_resource path="res://classes/mainMenuOptions/VolumeControl.gd" type="Script" id=4]
+[ext_resource path="res://assets/sprites/menuUi/arrow.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/info_box.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=25]
+size = 8
+font_data = ExtResource( 1 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 19, 12 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 5 )
+region = Rect2( 19, 0, 19, 12 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 5 )
+region = Rect2( 38, 0, 19, 12 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 5 )
+region = Rect2( 57, 0, 19, 12 )
+
+[sub_resource type="SpriteFrames" id=30]
+animations = [ {
+"frames": [ SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ) ],
+"loop": false,
+"name": "default",
+"speed": 15.0
+} ]
+
+[node name="VolumeControl" type="Control"]
+margin_right = 168.0
+margin_bottom = 33.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bg" type="NinePatchRect" parent="."]
+modulate = Color( 0.152941, 0.054902, 0.0901961, 1 )
+margin_left = -4.0
+margin_top = 9.0
+margin_right = 166.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, -0.299653, 20, 20.2997 )
+patch_margin_left = 5
+patch_margin_top = 6
+patch_margin_right = 7
+patch_margin_bottom = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VolLabel" type="Label" parent="."]
+margin_left = 6.0
+margin_top = 1.0
+margin_right = 98.0
+margin_bottom = 9.0
+custom_fonts/font = SubResource( 25 )
+text = "Volume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VolBg" type="TextureRect" parent="."]
+margin_left = 2.0
+margin_top = 13.0
+margin_right = 161.0
+margin_bottom = 29.0
+texture = ExtResource( 2 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Vol" type="TextureRect" parent="."]
+margin_top = 11.0
+margin_right = 113.0
+margin_bottom = 27.0
+texture = ExtResource( 3 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Down" type="AnimatedSprite" parent="."]
+position = Vector2( -12, 19 )
+rotation = -1.57079
+frames = SubResource( 30 )
+frame = 3
+
+[node name="Up" type="AnimatedSprite" parent="."]
+position = Vector2( 172, 20 )
+rotation = -4.71238
+frames = SubResource( 30 )
+frame = 3
+
+[node name="Label" type="Label" parent="."]
+margin_top = 3.0
+margin_right = 40.0
+margin_bottom = 17.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -67,7 +67,7 @@ margin_right = 38.0
 margin_bottom = 53.0
 rect_pivot_offset = Vector2( 19, 8 )
 custom_fonts/font = SubResource( 1 )
-text = "Confirm"
+text = "Select"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -79,7 +79,7 @@ margin_right = 37.0
 margin_bottom = 72.0
 rect_pivot_offset = Vector2( 19, 8 )
 custom_fonts/font = SubResource( 1 )
-text = "Cancel"
+text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }

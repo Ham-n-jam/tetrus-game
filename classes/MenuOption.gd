@@ -10,5 +10,21 @@ func onClick() -> bool:
 	return false
 
 
+func onHover() -> void:
+	pass
+
+
+func onUnhover() -> void:
+	pass
+
+
+func onLeft() -> void:
+	pass
+
+
+func onRight() -> void:
+	pass
+
+
 func handleInput(_ev: InputEvent) -> bool:
 	return false

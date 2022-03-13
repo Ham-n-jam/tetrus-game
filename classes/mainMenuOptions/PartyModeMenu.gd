@@ -11,7 +11,7 @@ func _init():
 
 
 func onClick() -> bool:
-	$AnimationPlayer.play("partyModeOnClick")
+	$AnimationPlayer.play("onClick")
 	_isActive = true
 	return true
 
@@ -39,7 +39,8 @@ func handleInput(ev: InputEvent) -> bool:
 			$MarginContainer/Submenu/Players.play(String(_numPlayers) + "p")
 		
 		KEY_BACKSPACE:
-			$AnimationPlayer.play_backwards("partyModeOnClick")
+			$AnimationPlayer.play_backwards("onClick")
+			SfxPlayerSingleton.playSfx("Cancel")
 			return false
 		
 		KEY_ENTER, KEY_SPACE:

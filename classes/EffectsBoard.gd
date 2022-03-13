@@ -22,7 +22,7 @@ func init(numCols: int=10, numRows: int=20, blockSize: int=16, numInvisibleCells
 	_ghostBoardType = ghostBoardType
 	
 	# Read in saved player colours json, converting from hex String to Color
-	var coloursDict: Dictionary = _loadJson("res://saveData/playerColours.json")
+	var coloursDict: Dictionary = GlobalFunc.loadJson("res://saveData/playerColours.json")
 	for player in coloursDict:
 		var colourHex = coloursDict[player]
 		_playerColoursDict[player] = Color(colourHex) 
@@ -145,13 +145,3 @@ func handle_unpause():
 	for i in range(0, _numRows):
 		for j in range(0, _numCols):
 				_getChildCell(i, j).doUnpause()
-
-
-
-func _loadJson(jsonFilePath) -> Dictionary:
-	var file = File.new();
-	file.open(jsonFilePath, File.READ);
-	var dataDict: Dictionary = parse_json(file.get_as_text())
-	file.close()
-	
-	return dataDict

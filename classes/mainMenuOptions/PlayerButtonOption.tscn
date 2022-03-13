@@ -1,0 +1,109 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/fonts/SmolGHC.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/sprites/menuUi/bgSmall.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/onlineFont.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://classes/mainMenuOptions/RemapMenuOption.gd" type="Script" id=4]
+[ext_resource path="res://assets/sprites/menuUi/warning.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=32]
+size = 8
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=31]
+extra_spacing_top = -2
+font_data = ExtResource( 1 )
+
+[node name="PlayerButtonOption" type="Control" groups=["menuOptions"]]
+margin_left = 60.0
+margin_top = 26.0
+margin_right = 328.0
+margin_bottom = 41.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bg" type="NinePatchRect" parent="."]
+modulate = Color( 0.152941, 0.054902, 0.0901961, 1 )
+margin_left = 19.0
+margin_right = 268.0
+margin_bottom = 15.0
+texture = ExtResource( 2 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bg2" type="NinePatchRect" parent="Bg"]
+margin_left = -19.0
+margin_right = -4.0
+margin_bottom = 15.0
+texture = ExtResource( 2 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Warning" type="TextureRect" parent="."]
+margin_left = 253.0
+margin_top = 1.0
+margin_right = 265.0
+margin_bottom = 13.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Error" type="Label" parent="Warning"]
+margin_left = -113.0
+margin_top = 3.0
+margin_right = -4.0
+margin_bottom = 11.0
+grow_horizontal = 0
+custom_colors/font_color = Color( 0.870588, 0.101961, 0.164706, 1 )
+custom_fonts/font = SubResource( 32 )
+text = "Key matches P2's Softdrop"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Listening" type="Label" parent="."]
+margin_left = 188.0
+margin_top = 4.0
+margin_right = 280.0
+margin_bottom = 12.0
+custom_fonts/font = SubResource( 32 )
+text = "Press a key..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 4.0
+margin_top = 2.0
+margin_right = 11.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 31 )
+text = "X"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Desc" type="Label" parent="Label"]
+margin_left = 25.0
+margin_top = 2.0
+margin_right = 117.0
+margin_bottom = 10.0
+custom_fonts/font = SubResource( 32 )
+text = "Swap out Held Block"
+__meta__ = {
+"_edit_use_anchors_": false
+}

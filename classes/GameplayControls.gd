@@ -17,7 +17,7 @@ var _gameplay: Gameplay
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_playerControlsDict = _loadJson("res://saveData/controls.json")
+	_playerControlsDict = GlobalFunc.loadJson("res://saveData/controls.json")
 
 
 func init(numPlayers: int, gameplay: Gameplay) -> void:
@@ -152,11 +152,3 @@ func _getKeyForAction(player: int, action: String):
 	
 	return -1
 
-
-func _loadJson(jsonFilePath) -> Dictionary:
-	var file = File.new();
-	file.open(jsonFilePath, File.READ);
-	var dataDict: Dictionary = parse_json(file.get_as_text())
-	file.close()
-	
-	return dataDict
