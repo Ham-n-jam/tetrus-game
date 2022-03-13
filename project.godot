@@ -122,6 +122,7 @@ GlobalFunc="*res://classes/GlobalFunc.gd"
 
 window/size/width=640
 window/size/height=360
+window/size/fullscreen=true
 window/size/test_width=640
 window/size/test_height=360
 window/dpi/allow_hidpi=true

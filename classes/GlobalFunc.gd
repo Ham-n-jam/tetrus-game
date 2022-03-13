@@ -3,16 +3,65 @@ extends Node
 
 func getKeyDispString(scancode: int) -> String:
 	var dispStr: String = OS.get_scancode_string(scancode)
-	
+	dispStr = dispStr.to_upper()
 	# Shorten keypad key strings from "Kp n" to "Kn" to fit UI better
-	if("Kp " in dispStr):
+	if("KP " in dispStr):
 		return "K" + dispStr[3]
-	elif dispStr == "BackSpace":
-		return "Bs"
-	elif dispStr == "Enter":
-		return "En"
 	else:
-		return dispStr
+		match dispStr:
+			"EQUAL":
+				return "="
+			"MINUS":
+				return "-"
+			"QUOTELEFT":
+				return "`"
+			"BACKSLASH":
+				return "\\"
+			"BRACERIGHT":
+				return "]"
+			"BRACELEFT":
+				return "["
+			"APOSTROPHE":
+				return "'"
+			"SEMICOLON":
+				return ";"
+			"SLASH":
+				return "/"
+			"PERIOD":
+				return "."
+			"COMMA":
+				return ","
+			"LEFT":
+				return "˂"
+			"RIGHT":
+				return "˃"
+			"UP":
+				return "˄"
+			"DOWN":
+				return "˅"
+			"SPACE":
+				return "Ƶ"
+			"SHIFT":
+				return "Ƨ"
+			"CONTROL":
+				return "Ʒ"
+			"ALT":
+				return "ª"
+			"TAB":
+				return "Š"
+			"ENTER":
+				return "ˀ"
+			"DELETE":
+				return "ˁ"
+			"ESCAPE":
+				return "˥"
+			"HOME":
+				return "˥"
+			"END":
+				return "ư"
+			"BACKSPACE":
+				return "˿"
+	return dispStr
 
 
 func loadJson(jsonFilePath) -> Dictionary:

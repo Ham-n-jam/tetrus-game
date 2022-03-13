@@ -151,9 +151,9 @@ __meta__ = {
 
 [node name="rotateLeft" type="CenterContainer" parent="."]
 margin_left = 20.0
-margin_top = 18.0
+margin_top = 16.0
 margin_right = 29.0
-margin_bottom = 32.0
+margin_bottom = 30.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -167,9 +167,9 @@ uppercase = true
 
 [node name="rotateRight" type="CenterContainer" parent="."]
 margin_left = 68.0
-margin_top = 18.0
+margin_top = 16.0
 margin_right = 77.0
-margin_bottom = 32.0
+margin_bottom = 30.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -184,9 +184,9 @@ uppercase = true
 
 [node name="right" type="CenterContainer" parent="."]
 margin_left = 59.0
-margin_top = 41.0
+margin_top = 39.0
 margin_right = 68.0
-margin_bottom = 55.0
+margin_bottom = 53.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -201,9 +201,9 @@ uppercase = true
 
 [node name="left" type="CenterContainer" parent="."]
 margin_left = 29.0
-margin_top = 41.0
+margin_top = 39.0
 margin_right = 38.0
-margin_bottom = 55.0
+margin_bottom = 53.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -218,9 +218,9 @@ uppercase = true
 
 [node name="softDrop" type="CenterContainer" parent="."]
 margin_left = 44.0
-margin_top = 41.0
+margin_top = 39.0
 margin_right = 53.0
-margin_bottom = 55.0
+margin_bottom = 53.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -235,9 +235,9 @@ uppercase = true
 
 [node name="hardDrop" type="CenterContainer" parent="."]
 margin_left = 44.0
-margin_top = 26.0
+margin_top = 24.0
 margin_right = 53.0
-margin_bottom = 40.0
+margin_bottom = 38.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -251,9 +251,9 @@ uppercase = true
 
 [node name="hold" type="CenterContainer" parent="."]
 margin_left = 87.0
-margin_top = 41.0
+margin_top = 39.0
 margin_right = 96.0
-margin_bottom = 55.0
+margin_bottom = 53.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

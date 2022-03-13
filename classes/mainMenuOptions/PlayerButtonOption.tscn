@@ -39,8 +39,8 @@ __meta__ = {
 }
 
 [node name="Bg2" type="NinePatchRect" parent="Bg"]
-margin_left = -19.0
-margin_right = -4.0
+margin_left = -20.0
+margin_right = -3.0
 margin_bottom = 15.0
 texture = ExtResource( 2 )
 patch_margin_left = 2
@@ -86,10 +86,9 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 4.0
-margin_top = 2.0
-margin_right = 11.0
-margin_bottom = 16.0
+margin_left = 3.0
+margin_right = 10.0
+margin_bottom = 14.0
 custom_fonts/font = SubResource( 31 )
 text = "X"
 uppercase = true
@@ -99,9 +98,9 @@ __meta__ = {
 
 [node name="Desc" type="Label" parent="Label"]
 margin_left = 25.0
-margin_top = 2.0
+margin_top = 4.0
 margin_right = 117.0
-margin_bottom = 10.0
+margin_bottom = 12.0
 custom_fonts/font = SubResource( 32 )
 text = "Swap out Held Block"
 __meta__ = {

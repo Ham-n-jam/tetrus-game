@@ -70,8 +70,12 @@ func remapButton(scancode: int) -> void:
 			if errorKey == null || errorKey == "":
 				$Warning.visible = false
 	
-	# Save the key in the .json file
 	var thisPlayersControls: Dictionary = _playerControlsDict[str(_playerNum)]
+	if thisPlayersControls.has(str(scancode)) and thisPlayersControls[str(scancode)] != action:
+		$Warning/Error.text = "Duplicate key"
+		$Warning.visible = true
+	
+	# Save the key in the .json file
 	for scancodeKey in thisPlayersControls.keys():
 		var actionVal: String = thisPlayersControls[scancodeKey]
 		if actionVal == action:

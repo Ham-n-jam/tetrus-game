@@ -37,6 +37,7 @@ func onUnhover() -> void:
 func onLeft() -> void:
 	currentPlayer = posmod(currentPlayer - 2, 4) + 1
 	playerGameInfo.init(currentPlayer)
+	resetOptions()
 	$Down.frame = 0
 	$Down.play("default")
 
@@ -44,8 +45,13 @@ func onLeft() -> void:
 func onRight() -> void:
 	currentPlayer = (currentPlayer) % 4 + 1
 	playerGameInfo.init(currentPlayer)
+	resetOptions()
 	$Up.frame = 0
 	$Up.play("default")
+
+func resetOptions() -> void:
+	for option in _options:
+		option.get_node("Warning").visible = false
 
 
 func showArrows() -> void:
